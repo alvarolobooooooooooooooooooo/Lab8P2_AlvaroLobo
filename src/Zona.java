@@ -1,13 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author agln7
- */
+import java.util.ArrayList;
+
+
 public class Zona {
-    
+    private int id_zona;
+    private String nombre;
+    private ArrayList <Item> items = new ArrayList();
+    private int remuneracion;
+    private int prob_derrumbe;
+    private int prob_atacado;
 }
