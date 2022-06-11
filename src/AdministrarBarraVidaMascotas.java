@@ -49,6 +49,7 @@ public class AdministrarBarraVidaMascotas extends Thread{
 
     @Override
     public void run() {
+        JOptionPane.showMessageDialog(null, pb_vida.getValue());
         while (vidaHilo) {
             if (retroceder) {
                 JOptionPane.showMessageDialog(null, pb_vida.getValue());
