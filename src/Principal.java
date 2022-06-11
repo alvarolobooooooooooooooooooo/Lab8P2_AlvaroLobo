@@ -40,7 +40,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_mascotas = new javax.swing.JTable();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        pb_vidaMascota = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tf_nombreMascota = new javax.swing.JTextField();
@@ -53,7 +53,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         tf_probabilidadITEM = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        box_alimentos = new javax.swing.JCheckBox();
         tf_costoMascota = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         tf_probabilidadDERRUMBE = new javax.swing.JTextField();
@@ -103,14 +103,14 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1012, Short.MAX_VALUE)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pb_vidaMascota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pb_vidaMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(129, 129, 129))
@@ -132,7 +132,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel7.setText("Nombre");
 
-        jCheckBox1.setText("Alimento");
+        box_alimentos.setText("Alimento");
 
         jLabel8.setText("Probabilidad de obtencion");
 
@@ -220,7 +220,7 @@ public class Principal extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBox1)
+                                    .addComponent(box_alimentos)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
@@ -294,7 +294,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tf_vidaMascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox1)
+                            .addComponent(box_alimentos)
                             .addComponent(jLabel12))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -444,6 +444,7 @@ public class Principal extends javax.swing.JFrame {
                         modelo.addRow(newrow);
                         JOptionPane.showMessageDialog(this, "Mascota Adoptada");
                         tf_comandos.setText("");
+                        AdministrarBarraVidaMascotas abvm = new AdministrarBarraVidaMascotas(pb_vidaMascota);
                                 
                     }
                 }
@@ -582,10 +583,19 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_crearZONAMouseClicked
 
     private void boton_crearItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_crearItemMouseClicked
-
+        boolean alimento = false;
+        
         DefaultListModel modelo = (DefaultListModel)lista_items.getModel();
         modelo.add(contITEMS, tf_nombreITEM.getText());
         contITEMS++;
+        
+        if (box_alimentos.isSelected()) {
+            alimento = true;
+        }
+        
+        Item i = new Item(Integer.parseInt(tf_nombreITEM.getText()), tf_nombreITEM.getText(), alimento, Integer.parseInt(tf_probabilidadITEM.getText()), Integer.parseInt(tf_precioITEM.getText()));
+        items.add(i);
+        
         
         tf_nombreITEM.setText("");
         tf_precioITEM.setText("");
@@ -651,9 +661,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton boton_color;
     private javax.swing.JButton boton_crearItem;
     private javax.swing.JButton boton_crearZONA;
+    private javax.swing.JCheckBox box_alimentos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -672,7 +682,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -680,6 +689,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JList<String> lista_items;
     private javax.swing.JList<String> lista_itemsZONA;
+    private javax.swing.JProgressBar pb_vidaMascota;
     private javax.swing.JTable tabla_mascotas;
     private javax.swing.JTextArea textarea_comandos;
     private javax.swing.JTextField tf_comandos;
@@ -699,5 +709,4 @@ public class Principal extends javax.swing.JFrame {
     int id_zonaCONT = 2;
     ArrayList <Mascota> mascotas = new ArrayList();
     ArrayList <Item> items = new ArrayList();
-
 }
